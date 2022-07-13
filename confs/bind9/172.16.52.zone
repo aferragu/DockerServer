@@ -1,0 +1,16 @@
+$TTL 86400;
+
+17.172.in-addr.arpa.	IN	SOA	dns.lab.ort.edu.uy.	ubuntu.lab.ort.edu.uy.	(
+				2008100100;
+				10800;
+				1800;
+				3600;
+				3600;
+);
+
+			NS	dns.lab.ort.edu.uy.
+			MX	0	mail.lab.ort.edu.uy.
+
+2.0.17.172.in-addr.arpa.	IN	PTR	mail.lab.ort.edu.uy.
+2.0.17.172.in-addr.arpa.	IN	PTR	www.lab.ort.edu.uy.
+2.0.17.172.in-addr.arpa.	IN	PTR	dns.lab.ort.edu.uy.
