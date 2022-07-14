@@ -6,7 +6,9 @@ LABEL name="Servidor de Redes" maintainer="ferragut@fi365.ort.edu.uy"
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
     && apt-get install -y --no-install-recommends iproute2 telnetd ftpd openssh-server lighttpd postfix dovecot-pop3d dovecot-imapd bind9 supervisor \
-    && apt-get clean
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
     
 RUN useradd -m redes \
     && echo redes:redes | chpasswd \
