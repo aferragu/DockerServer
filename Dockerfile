@@ -40,6 +40,7 @@ EXPOSE 25
 
 #DNS
 ADD confs/bind9 /etc/bind
+COPY confs/resolv/resolv.conf /etc/resolv.conf
 
 #SCRIPTS
 ADD confs/scripts /root
