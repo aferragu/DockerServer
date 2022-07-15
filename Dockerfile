@@ -5,27 +5,36 @@ LABEL name="Servidor de Redes" maintainer="ferragut@fi365.ort.edu.uy"
 # Set up the systems
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends iproute2 telnetd ftpd openssh-server lighttpd postfix dovecot-pop3d dovecot-imapd bind9 supervisor \
+    && apt-get install -y --no-install-recommends iputils-ping iproute2 telnetd ftpd openssh-server lighttpd postfix dovecot-pop3d dovecot-imapd bind9 supervisor \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-    
+#Create users    
 RUN useradd -m redes \
     && echo redes:redes | chpasswd \
     && usermod -aG sudo redes
+
+RUN useradd -m ort-grupo1 \
+    && echo ort-grupo1:ort-grupo1 | chpasswd
+
+RUN useradd -m ort-grupo2 \
+    && echo ort-grupo2:ort-grupo2 | chpasswd
+
+RUN useradd -m ort-grupo3 \
+    && echo ort-grupo3:ort-grupo3 | chpasswd
+
+RUN useradd -m ort-grupo4 \
+    && echo ort-grupo4:ort-grupo4 | chpasswd
 
 WORKDIR /root
 
 #HTTP
 ADD confs/web_content /var/www/html
-EXPOSE 80
 
 #SSH
-EXPOSE 22 
 
 #TELNET, FTP
 COPY confs/inetd/inetd.conf /etc/inetd.conf
-EXPOSE 23 20 21 30000:40000
 
 #Public files for FTP
 RUN mkdir -p /home/publico
@@ -33,12 +42,10 @@ ADD confs/publico /home/publico
 
 #POP3
 COPY confs/dovecot/dovecot.conf /etc/dovecot/dovecot.conf
-EXPOSE 110
 
 #SMTP
 ADD confs/postfix/ /etc/postfix
 RUN chmod a+x /etc/postfix/postfix_init.sh
-EXPOSE 25
 
 #DNS
 ADD confs/bind9 /etc/bind
