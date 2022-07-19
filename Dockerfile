@@ -5,7 +5,7 @@ LABEL name="Servidor de Redes" maintainer="ferragut@fi365.ort.edu.uy"
 # Set up the systems
 ENV DEBIAN_FRONTEND=noninteractive
 RUN apt-get update \
-    && apt-get install -y --no-install-recommends iputils-ping iproute2 telnetd ftpd openssh-server lighttpd postfix dovecot-pop3d dovecot-imapd bind9 supervisor \
+    && apt-get install -y --no-install-recommends sudo dnsutils iputils-ping iproute2 telnetd ftpd openssh-server lighttpd postfix dovecot-pop3d dovecot-imapd bind9 supervisor \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -60,4 +60,4 @@ RUN chmod a+x /root/enlace1.sh /root/enlace2.sh /root/liberar_enlace.sh
 RUN mkdir -p /var/run/sshd /var/run/dovecot /var/run/lighttpd /var/run/inetd /var/log/supervisor
 COPY confs/supervisor/supervisord.conf /etc/supervisor/conf.d/supervisord.conf
 
-CMD ["/usr/bin/supervisord"]
+CMD ["/usr/bin/supervisord","-c","/etc/supervisor/conf.d/supervisord.conf"]

@@ -1,0 +1,25 @@
+version: '3.9'
+
+services:
+    servidor_redes:
+        build: .
+        hostname: mail.lab.ort.edu.uy
+        domainname: lab.ort.edu.uy
+        #add net admin capabilities to run scripts limiting network bandwidth
+        cap_add:
+          - NET_ADMIN
+        networks: 
+            lab_redes:
+                ipv4_address: 172.20.0.2 
+
+networks:
+    lab_redes:
+        driver: bridge
+        #uncomment to enable ipv6
+        #driver_opts:
+        #    com.docker.network.enable_ipv6: "true"
+        ipam:
+            driver: default
+            config:
+                - subnet: 172.20.0.0/24
+                  gateway: 172.20.0.1

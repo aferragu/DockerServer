@@ -11,7 +11,7 @@ lab.ort.edu.uy.	IN	SOA	dns.lab.ort.edu.uy. 	ubuntu.lab.ort.edu.uy. (
 lab.ort.edu.uy.	IN	NS	dns.lab.ort.edu.uy.
 lab.ort.edu.uy.	IN	MX	0	mail.lab.ort.edu.uy.
 
-mail.lab.ort.edu.uy.	IN	A	172.17.0.2
-www.lab.ort.edu.uy.	IN	A	172.17.0.2
-dns.lab.ort.edu.uy.	IN	A	172.17.0.2
+mail.lab.ort.edu.uy.	IN	A	172.20.0.2
+www.lab.ort.edu.uy.	IN	A	172.20.0.2
+dns.lab.ort.edu.uy.	IN	A	172.20.0.2
 web.lab.ort.edu.uy.	IN	CNAME	www.lab.ort.edu.uy.
