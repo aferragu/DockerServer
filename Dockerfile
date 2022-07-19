@@ -45,6 +45,7 @@ COPY confs/dovecot/dovecot.conf /etc/dovecot/dovecot.conf
 
 #SMTP
 ADD confs/postfix/ /etc/postfix
+#this script is needed to start postfix from supervisord
 RUN chmod a+x /etc/postfix/postfix_init.sh
 
 #DNS
