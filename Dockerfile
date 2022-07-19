@@ -54,6 +54,7 @@ COPY confs/resolv/resolv.conf /etc/resolv.conf
 
 #SCRIPTS
 ADD confs/scripts /root
+RUN chmod a+x /root/enlace1.sh /root/enlace2.sh /root/liberar_enlace.sh
 
 #Supervisor daemon
 RUN mkdir -p /var/run/sshd /var/run/dovecot /var/run/lighttpd /var/run/inetd /var/log/supervisor
