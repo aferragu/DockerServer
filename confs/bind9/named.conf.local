@@ -7,9 +7,9 @@ zone "lab.ort.edu.uy" {
 	file "/etc/bind/lab.zone";
 };
 
-zone "17.172.in-addr.arpa" {
+zone "0.20.172.in-addr.arpa" {
 	type master;
-	file "/etc/bind/172.16.zone";
+	file "/etc/bind/172.20.0.zone";
 };
 
 

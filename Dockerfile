@@ -10,20 +10,20 @@ RUN apt-get update \
     && rm -rf /var/lib/apt/lists/*
 
 #Create users    
-RUN useradd -m redes \
+RUN useradd -m redes --shell /bin/bash \
     && echo redes:redes | chpasswd \
     && usermod -aG sudo redes
 
-RUN useradd -m ort-grupo1 \
+RUN useradd -m ort-grupo1 --shell /bin/bash \
     && echo ort-grupo1:ort-grupo1 | chpasswd
 
-RUN useradd -m ort-grupo2 \
+RUN useradd -m ort-grupo2 --shell /bin/bash \
     && echo ort-grupo2:ort-grupo2 | chpasswd
 
-RUN useradd -m ort-grupo3 \
+RUN useradd -m ort-grupo3 --shell /bin/bash \
     && echo ort-grupo3:ort-grupo3 | chpasswd
 
-RUN useradd -m ort-grupo4 \
+RUN useradd -m ort-grupo4 --shell /bin/bash \
     && echo ort-grupo4:ort-grupo4 | chpasswd
 
 WORKDIR /root
@@ -50,11 +50,12 @@ RUN chmod a+x /etc/postfix/postfix_init.sh
 
 #DNS
 ADD confs/bind9 /etc/bind
-COPY confs/resolv/resolv.conf /etc/resolv.conf
 
 #SCRIPTS
 ADD confs/scripts /root
 RUN chmod a+x /root/enlace1.sh /root/enlace2.sh /root/liberar_enlace.sh
+ADD confs/scripts /home/redes
+RUN chmod a+x /home/redes/enlace1.sh /home/redes/enlace2.sh /home/redes/liberar_enlace.sh
 
 #Supervisor daemon
 RUN mkdir -p /var/run/sshd /var/run/dovecot /var/run/lighttpd /var/run/inetd /var/log/supervisor

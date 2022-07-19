@@ -3,7 +3,7 @@ version: '3.9'
 services:
     servidor_redes:
         build: .
-        hostname: mail.lab.ort.edu.uy
+        hostname: servidorredes
         domainname: lab.ort.edu.uy
         #add net admin capabilities to run scripts limiting network bandwidth
         cap_add:

@@ -1,6 +1,6 @@
 $TTL 86400;
 
-lab.ort.edu.uy.	IN	SOA	dns.lab.ort.edu.uy. 	ubuntu.lab.ort.edu.uy. (
+lab.ort.edu.uy.	IN	SOA	servidorredes.lab.ort.edu.uy.	redes.lab.ort.edu.uy. (
 				2008100100;
 				10800;
 				1800;
@@ -8,10 +8,11 @@ lab.ort.edu.uy.	IN	SOA	dns.lab.ort.edu.uy. 	ubuntu.lab.ort.edu.uy. (
 				3600;
 );
 
-lab.ort.edu.uy.	IN	NS	dns.lab.ort.edu.uy.
-lab.ort.edu.uy.	IN	MX	0	mail.lab.ort.edu.uy.
+lab.ort.edu.uy.		IN	NS		servidorredes.lab.ort.edu.uy.
+lab.ort.edu.uy.		IN	MX	0	mail.lab.ort.edu.uy.
 
-mail.lab.ort.edu.uy.	IN	A	172.20.0.2
-www.lab.ort.edu.uy.	IN	A	172.20.0.2
-dns.lab.ort.edu.uy.	IN	A	172.20.0.2
-web.lab.ort.edu.uy.	IN	CNAME	www.lab.ort.edu.uy.
+servidorredes.lab.ort.edu.uy. 	IN 	A 		172.20.0.2
+mail.lab.ort.edu.uy.			IN	A		172.20.0.2
+dns.lab.ort.edu.uy.				IN	A		172.20.0.2
+www.lab.ort.edu.uy.				IN	CNAME	servidorredes.lab.ort.edu.uy.
+web.lab.ort.edu.uy.				IN	CNAME	servidorredes.lab.ort.edu.uy.
