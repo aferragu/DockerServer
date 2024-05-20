@@ -26,6 +26,9 @@ RUN useradd -m ort-grupo3 --shell /bin/bash \
 RUN useradd -m ort-grupo4 --shell /bin/bash \
     && echo ort-grupo4:ort-grupo4 | chpasswd
 
+# Add alias netstat=ss for all users
+RUN echo "alias netstat=ss" >> /etc/profile
+
 WORKDIR /root
 
 #HTTP
